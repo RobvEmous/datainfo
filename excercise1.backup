@@ -1,0 +1,133 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.3.4
+-- Dumped by pg_dump version 9.3.4
+-- Started on 2014-05-06 15:27:01
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+DROP DATABASE excercise1;
+--
+-- TOC entry 1935 (class 1262 OID 16522)
+-- Name: excercise1; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE excercise1 WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Dutch_Netherlands.1252' LC_CTYPE = 'Dutch_Netherlands.1252';
+
+
+ALTER DATABASE excercise1 OWNER TO postgres;
+
+\connect excercise1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 5 (class 2615 OID 2200)
+-- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+CREATE SCHEMA public;
+
+
+ALTER SCHEMA public OWNER TO postgres;
+
+--
+-- TOC entry 1936 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
+--
+
+COMMENT ON SCHEMA public IS 'standard public schema';
+
+
+--
+-- TOC entry 171 (class 3079 OID 11750)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 1938 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 170 (class 1259 OID 16574)
+-- Name: problem1; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE problem1 (
+    task character(1) NOT NULL,
+    result boolean,
+    motivation character varying(200)
+);
+
+
+ALTER TABLE public.problem1 OWNER TO postgres;
+
+--
+-- TOC entry 1930 (class 0 OID 16574)
+-- Dependencies: 170
+-- Data for Name: problem1; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO problem1 (task, result, motivation) VALUES ('a', true, 'als je de capaciteit van een voertuig weet, volgt daar nog niet meteen één voertuig uit (maar meerdere)');
+INSERT INTO problem1 (task, result, motivation) VALUES ('d', true, 'als je weet met welk pakje je te maken hebt kun je via de factuur het afleveradres opzoeken');
+INSERT INTO problem1 (task, result, motivation) VALUES ('b', true, 'als je het voertuig weet weet je ook de capaciteit van het voertuig, dit is duidelijk');
+INSERT INTO problem1 (task, result, motivation) VALUES ('c', false, 'als je A en F weet is alleen duidelijk dat je te maken hebt met een pakje voor dat adres, maar niet één bepaald pakje');
+INSERT INTO problem1 (task, result, motivation) VALUES ('e', true, 'als je weet met welk pakje je te maken hebt weet je ook de ontvanger en de prijs van het pakje');
+INSERT INTO problem1 (task, result, motivation) VALUES ('f', false, 'B kan gerechtigd zijn voor meerdere V''s dus uit B volgt niet één V (meerdere)');
+INSERT INTO problem1 (task, result, motivation) VALUES ('g', false, 'B kan gerechtigd zijn voor meerdere V''s dus uit een V (en C) volgt niet één bestuurder');
+
+
+--
+-- TOC entry 1822 (class 2606 OID 16578)
+-- Name: problem1_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY problem1
+    ADD CONSTRAINT problem1_pkey PRIMARY KEY (task);
+
+
+--
+-- TOC entry 1937 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2014-05-06 15:27:01
+
+--
+-- PostgreSQL database dump complete
+--
+
