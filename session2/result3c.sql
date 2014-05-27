@@ -1,3 +1,6 @@
 SELECT p.name 
 FROM Person p
-WHERE 'p schreef regisseurloze films'
+WHERE EXISTS (
+	
+	'p is a writer of a movie'
+);
